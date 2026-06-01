@@ -5,7 +5,7 @@ Local evaluation kit for [Fish Speech](https://github.com/fishaudio/fish-speech)
 ## Quick start
 
 ```bash
-cd /home/zeiron/projects/zeiron
+cd repo
 
 # 1. Start WebUI (downloads weights on first run)
 ./scripts/bootstrap-fish-speech.sh --webui
