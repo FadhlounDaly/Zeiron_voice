@@ -22,7 +22,7 @@ Score after listening tests (**1 = poor, 5 = excellent**). Replace `—` with yo
 | **Resource usage (peak VRAM)** | ~8–12 GB est. | ~2–4 GB est. | `nvidia-smi` during run |
 | **Ease of deployment** | Medium | Easier | XTTS single container; Fish needs HF weights |
 | **Local execution suitability** | Good @ ≥12 GB | Excellent @ ≥8 GB | |
-| **Proper nouns** | — | — | Chad, Atlas, Bifrost |
+| **Proper nouns** | — | — | Project-specific entity names |
 | **Japanese (native script)** | — | — | Requires JA reference + text |
 | **French** | — | — | Requires FR reference + text |
 
@@ -34,7 +34,7 @@ Score after listening tests (**1 = poor, 5 = excellent**). Replace `—` with yo
 |---|-------------|---------|
 | Strength | Strong timbre lock when transcript matches; multiple references possible | Fast zero-shot from short clip |
 | Weakness | Sensitive to `sample.lab` accuracy | Can sound “filtered” or inconsistent on long phrases |
-| Zeiron fit | Good for **fixed persona** (Chad) with one-time quality recording | Good for **quick experiments** |
+| Zeiron fit | Good for **fixed persona** (assistant voice) with one-time quality recording | Good for **quick experiments** |
 
 ### Naturalness & prosody
 

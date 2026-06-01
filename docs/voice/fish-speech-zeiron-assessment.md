@@ -121,14 +121,14 @@ Fish Audio documents multilingual generation and phoneme control. For Zeiron’s
 | **Japanese** | Supported in product line; use **Japanese reference** + Japanese `text` for best accent | Fine-grained: [Japanese phoneme docs](https://docs.fish.audio/developer-guide/core-features/fine-grained-control/japanese.md) |
 | **French** | Supported among multilingual set | Pass French script; French reference preferred |
 
-**Cross-lingual cloning** (English reference, Japanese text) often causes accent drift — prefer language-matched references per voice profile, e.g. `references/chad-en/`, `references/chad-ja/`.
+**Cross-lingual cloning** (English reference, Japanese text) often causes accent drift — prefer language-matched references per voice profile, e.g. `references/voice_a-en/`, `references/voice_a-ja/`.
 
 Harmony should pass:
 
 ```json
 {
   "text": "…",
-  "voice_id": "chad-ja",
+  "voice_id": "voice_a-ja",
   "language_hint": "ja"
 }
 ```
@@ -140,7 +140,7 @@ Exact parameter names depend on OpenAPI for the pinned Docker tag.
 | Concept | Fish Speech POC mapping |
 |---------|-------------------------|
 | User voice | `references/<user_id>/` |
-| Persona (Chad assistant) | `references/chad/` |
+| Persona (assistant voice) | `references/voice_a/` |
 | Emotion | Inline markers in text from Harmony |
 | Caching | Write `output/cache/<hash>.wav` keyed by `text+voice_id` |
 
@@ -148,7 +148,7 @@ Exact parameter names depend on OpenAPI for the pinned Docker tag.
 
 ```env
 FISH_SPEECH_URL=http://127.0.0.1:8080
-FISH_SPEECH_VOICE_DEFAULT=chad
+FISH_SPEECH_VOICE_DEFAULT=voice_a
 FISH_SPEECH_COMPILE=1
 FISH_SPEECH_FORMAT=wav
 ```

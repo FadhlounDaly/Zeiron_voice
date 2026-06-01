@@ -1,3 +1,3 @@
-Good morning Chad. Atlas ingestion is healthy.
-There are two pending approvals waiting in Bifrost.
-Your Japanese study session starts in thirty minutes.
+Good morning. System ingestion is healthy.
+There are two pending approvals waiting in the queue.
+Your scheduled study session starts in thirty minutes.

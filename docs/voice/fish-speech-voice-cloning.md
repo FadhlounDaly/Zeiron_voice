@@ -18,22 +18,22 @@ Fish Speech S1-mini uses **reference-audio cloning** at inference time: you do n
 ### A. Prepare reference (host)
 
 ```bash
-./scripts/register-voice.sh chad /path/to/recording.wav
-# Edit references/chad/sample.lab so it matches the audio exactly
+./scripts/register-voice.sh voice_a /path/to/recording.wav
+# Edit references/voice_a/sample.lab so it matches the audio exactly
 ```
 
 Optional quality pass:
 
 ```bash
-ffmpeg -i references/chad/sample.wav -af "highpass=f=80,lowpass=f=8000" references/chad/sample_clean.wav
-mv references/chad/sample_clean.wav references/chad/sample.wav
+ffmpeg -i references/voice_a/sample.wav -af "highpass=f=80,lowpass=f=8000" references/voice_a/sample_clean.wav
+mv references/voice_a/sample_clean.wav references/voice_a/sample.wav
 ```
 
 ### B. Register in WebUI (interactive)
 
 1. Start WebUI: `./scripts/bootstrap-fish-speech.sh --webui`
 2. Open the URL printed by the script (default http://localhost:7860)
-3. Upload reference audio or select `chad` from the references library (if listed).
+3. Upload reference audio or select `voice_a` from the references library (if listed).
 4. Enter / confirm **reference transcript** (matches `sample.lab`).
 5. Enter target text → Generate → listen → download.
 
@@ -52,7 +52,7 @@ Swagger at `/docs`. Typical JSON body:
 
 ```json
 {
-  "text": "Good morning Chad. Atlas ingestion is healthy.",
+  "text": "Good morning. System ingestion is healthy.",
   "reference_audio": "<base64 wav>",
   "reference_text": "<transcript of reference>",
   "format": "wav"
@@ -63,9 +63,9 @@ Swagger at `/docs`. Typical JSON body:
 
 | # | Text | Notes |
 |---|------|-------|
-| 1 | Good morning Chad. Atlas ingestion is healthy. | English, calm briefing tone |
-| 2 | There are two pending approvals waiting in Bifrost. | English, slightly urgent |
-| 3 | Your Japanese study session starts in thirty minutes. | English surface text; tests prosody on mixed context |
+| 1 | Good morning. System ingestion is healthy. | English, calm briefing tone |
+| 2 | There are two pending approvals waiting in the queue. | English, slightly urgent |
+| 3 | Your scheduled study session starts in thirty minutes. | English surface text; tests prosody on mixed context |
 
 For Japanese **spoken** output, use Japanese script in `text` with a Japanese `sample.lab` / reference recording (see multilingual section in [fish-speech-zeiron-assessment.md](./fish-speech-zeiron-assessment.md)).
 
@@ -112,7 +112,7 @@ Listen with headphones. Score 1–5.
 | Voice similarity | | |
 | Naturalness | | |
 | Prosody / pacing | | |
-| Proper nouns (Chad, Atlas, Bifrost) | | |
+| Proper nouns (project-specific names) | | |
 | Emotional fit (briefing vs reminder) | | |
 | Artifacts (robotic, metallic, breath) | | |
 

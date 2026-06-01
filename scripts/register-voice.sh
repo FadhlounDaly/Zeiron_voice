@@ -33,7 +33,7 @@ CREATED_LAB=0
 if [[ ! -f "${DEST_DIR}/sample.lab" ]]; then
   CREATED_LAB=1
   cat > "${DEST_DIR}/sample.lab" <<'EOF'
-Hello, my name is Chad. I use Zeiron to stay on top of Atlas ingestion and Bifrost approvals.
+This is a neutral sample transcript for a synthetic assistant voice profile.
 EOF
 fi
 

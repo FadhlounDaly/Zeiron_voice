@@ -83,7 +83,7 @@ echo "=============================================="
 echo ""
 if [[ "$MODE" == "webui" ]]; then
   echo "Next:"
-  echo "  ./scripts/register-voice.sh chad /path/to/recording.wav"
+  echo "  ./scripts/register-voice.sh voice_a /path/to/recording.wav"
   echo "  ./scripts/bootstrap-fish-speech.sh --api"
   echo "  ./scripts/run-zeiron-voice-test.sh"
 else

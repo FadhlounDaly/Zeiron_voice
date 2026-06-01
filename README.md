@@ -11,8 +11,8 @@ cd /home/zeiron/projects/zeiron
 ./scripts/bootstrap-fish-speech.sh --webui
 
 # 2. Register your voice (30s–3min recording)
-./scripts/register-voice.sh chad /path/to/recording.wav
-# Edit references/chad/sample.lab so it matches the audio
+./scripts/register-voice.sh voice_a /path/to/recording.wav
+# Edit references/voice_a/sample.lab so it matches the audio
 
 # 3. Start API for automated tests (stops WebUI to free GPU)
 ./scripts/bootstrap-fish-speech.sh --api
@@ -52,9 +52,9 @@ Fallback if Compose plugin is missing: `scripts/docker-run-webui.sh`, `scripts/d
 
 ## Test phrases
 
-1. Good morning Chad. Atlas ingestion is healthy.
-2. There are two pending approvals waiting in Bifrost.
-3. Your Japanese study session starts in thirty minutes.
+1. Good morning. System ingestion is healthy.
+2. There are two pending approvals waiting in the queue.
+3. Your scheduled study session starts in thirty minutes.
 
 ## Optional: XTTS comparison
 

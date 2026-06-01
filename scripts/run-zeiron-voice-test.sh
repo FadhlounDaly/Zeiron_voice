@@ -10,7 +10,7 @@ cd "$ROOT"
 zeiron_load_env "$ROOT"
 
 API_PORT="${API_PORT:-8080}"
-VOICE_ID="${VOICE_ID:-chad}"
+VOICE_ID="${VOICE_ID:-voice_a}"
 OUT_DIR="${ROOT}/outputs/fish-speech"
 REF_WAV="${ROOT}/references/${VOICE_ID}/sample.wav"
 REF_LAB="${ROOT}/references/${VOICE_ID}/sample.lab"
@@ -38,15 +38,15 @@ from pathlib import Path
 
 root = Path('/home/zeiron/projects/zeiron')
 api = 'http://127.0.0.1:' + os.environ.get('API_PORT', '8080')
-voice_id = os.environ.get('VOICE_ID', 'chad')
+voice_id = os.environ.get('VOICE_ID', 'voice_a')
 out_dir = root / 'outputs' / 'fish-speech'
 ref_wav = root / 'references' / voice_id / 'sample.wav'
 ref_lab = root / 'references' / voice_id / 'sample.lab'
 
 phrases = [
-    'Good morning Chad. Atlas ingestion is healthy.',
-    'There are two pending approvals waiting in Bifrost.',
-    'Your Japanese study session starts in thirty minutes.',
+    'Good morning. System ingestion is healthy.',
+    'There are two pending approvals waiting in the queue.',
+    'Your scheduled study session starts in thirty minutes.',
 ]
 
 ref_b64 = base64.b64encode(ref_wav.read_bytes()).decode('utf-8')

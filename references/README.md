@@ -5,14 +5,14 @@ Fish Speech discovers pre-registered voices from this directory.
 Register a voice:
 
 ```bash
-./scripts/register-voice.sh chad /path/to/recording.wav
+./scripts/register-voice.sh voice_a /path/to/recording.wav
 ```
 
 ## Layout
 
 ```
 references/
-└── chad/                 # VOICE_ID — change in .env or scripts
+└── voice_a/              # VOICE_ID — change in .env or scripts
     ├── sample.wav        # 30 s – 3 min, mono/stereo, 16–48 kHz
     └── sample.lab        # Exact transcript of sample.wav (one line)
 ```
@@ -22,7 +22,7 @@ references/
 - **Duration:** 30 seconds minimum; 1–2 minutes ideal for POC.
 - **Environment:** Quiet room, no music/TV, single speaker.
 - **Delivery:** Natural pace, steady volume, brief pauses between sentences.
-- **Format:** WAV preferred; FFmpeg can convert: `ffmpeg -i input.m4a -ar 44100 -ac 1 references/chad/sample.wav`
+- **Format:** WAV preferred; FFmpeg can convert: `ffmpeg -i input.m4a -ar 44100 -ac 1 references/voice_a/sample.wav`
 
 ## Transcript (`sample.lab`)
 
@@ -31,7 +31,7 @@ The text must match what is spoken in `sample.wav`. The WebUI/API use this for a
 Example `sample.lab`:
 
 ```
-Hello, my name is Chad. I use Zeiron to stay on top of Atlas ingestion and Bifrost approvals.
+This is a neutral reference transcript for a synthetic assistant voice profile.
 ```
 
 ## Permission
