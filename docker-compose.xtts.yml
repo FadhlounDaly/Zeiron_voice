@@ -1,0 +1,35 @@
+# Optional XTTS-v2 baseline for comparison (Phase 5)
+# Start only when running A/B tests: docker compose -f docker-compose.xtts.yml up -d
+
+name: zeiron-xtts
+
+services:
+  xtts:
+    image: ghcr.io/coqui-ai/tts:latest
+    container_name: zeiron-xtts
+    ports:
+      - "${XTTS_PORT:-5002}:5002"
+    command:
+      - --model_name
+      - tts_models/multilingual/multi-dataset/xtts_v2
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "5002"
+      - --use_cuda
+      - "true"
+    volumes:
+      - xtts_models:/root/.local/share/tts
+      - ./references:/references:ro
+      - ./outputs:/outputs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+
+volumes:
+  xtts_models:

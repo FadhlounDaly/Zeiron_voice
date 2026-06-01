@@ -1,0 +1,68 @@
+# Fish Speech POC — WebUI + API (official pre-built images)
+# Docs: docs/voice/fish-speech-setup.md
+
+name: zeiron-fish-speech
+
+services:
+  fish-speech-webui:
+    image: ${FISH_SPEECH_WEBUI_IMAGE:-zeiron/fish-speech:webui-s1-cu129}
+    container_name: zeiron-fish-speech-webui
+    ports:
+      - "${GRADIO_PORT:-7860}:7860"
+    environment:
+      COMPILE: ${COMPILE:-1}
+      GRADIO_SERVER_NAME: 0.0.0.0
+      GRADIO_SERVER_PORT: 7860
+      LLAMA_CHECKPOINT_PATH: ${LLAMA_CHECKPOINT_PATH:-checkpoints/openaudio-s1-mini}
+      DECODER_CHECKPOINT_PATH: ${DECODER_CHECKPOINT_PATH:-checkpoints/openaudio-s1-mini/codec.pth}
+      DECODER_CONFIG_NAME: modded_dac_vq
+    volumes:
+      - ./checkpoints:/app/checkpoints
+      - ./references:/app/references
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:7860/ >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+    restart: unless-stopped
+    profiles: ["webui", "default"]
+
+  fish-speech-api:
+    image: ${FISH_SPEECH_API_IMAGE:-zeiron/fish-speech:server-s1-cu129}
+    container_name: zeiron-fish-speech-api
+    ports:
+      - "${API_PORT:-8080}:8080"
+    environment:
+      COMPILE: ${COMPILE:-1}
+      API_SERVER_NAME: 0.0.0.0
+      API_SERVER_PORT: 8080
+      LLAMA_CHECKPOINT_PATH: ${LLAMA_CHECKPOINT_PATH:-checkpoints/openaudio-s1-mini}
+      DECODER_CHECKPOINT_PATH: ${DECODER_CHECKPOINT_PATH:-checkpoints/openaudio-s1-mini/codec.pth}
+      DECODER_CONFIG_NAME: modded_dac_vq
+    volumes:
+      - ./checkpoints:/app/checkpoints
+      - ./references:/app/references
+      - ./outputs:/app/outputs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:8080/ >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 180s
+    restart: unless-stopped
+    profiles: ["api"]

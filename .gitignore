@@ -1,0 +1,8 @@
+checkpoints/
+.venv/
+.cache/
+outputs/
+*.wav
+*.mp3
+.env
+__pycache__/
